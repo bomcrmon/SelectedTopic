@@ -5,29 +5,18 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(express.static('public'))
 
-app.get('/api/server-time', (request, response) => {
-    let now = new Date()
-    let time = {
-        hour: now.getHours(),
-        minute: now.getMinutes(),
-        second: now.getSeconds()
+app.get('/api/form-get', (request, response) => {
+    let t = request.query.target || ''
+    let k = request.query.kw || ''
+    let n = parseInt((Math.random() * 1000))
+    let r = {
+        target: t,
+        kw: k,
+        results: n
     }
-    response.json(time)
+    response.json(r)
 })
-function rd(min, max) {
-    let x = (max - min) + 1
-    return min + Math.floor(Math.random() * x)
-}
-app.get('/api/football-result', (request, response) => {
-    let table = `
-        <table border="1" style="margin: 7px auto">
-        <tr><td>ManU</td><td>${rd(0, 5)}-${rd(0, 5)}</td><td>Liverpool</td></tr>
-        <tr><td>Chelsea</td><td>${rd(0, 5)}-${rd(0, 5)}</td><td>ManCity</td></tr>
-        <tr><td>Arsenal</td><td>${rd(0, 5)}-${rd(0, 5)}</td><td>Spur</td></tr>
-        </table>
-    `
-    response.send(table)
-})
+
 app.listen(port, () => {
     console.log('Server listening on port ' + port)
 })
