@@ -10,5 +10,9 @@ import FormGet from './form-get'
 
 export default function App() {
   return <FormGet/>
+<<<<<<< HEAD
+}
+>>>>>>> parent of 5f642d0 (add form-post)
+=======
 }
 >>>>>>> parent of 5f642d0 (add form-post)
