@@ -10,6 +10,7 @@ export default function FormGet() {
         const formData = new FormData(form.current)
         let params = new URLSearchParams(formData) //.toString()
         let URL = '/api/form-get?' + params
+
         fetch(URL)
         .then(response => response.json())
         .then(result => {
@@ -23,6 +24,7 @@ export default function FormGet() {
         })
         .catch(err => alert(err))
     }
+
     return (
     <div style={{textAlign:'center', marginTop:'20px'}}>
         <form ref={form} onSubmit={onSubmitForm}>
